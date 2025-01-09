@@ -11,14 +11,24 @@ Description: Takes a string, randomizes it and then "solves" the string randomly
 #include <time.h>
 
 
-int main(void) {
+int main(int argc, char *argv[]) {
+
+    if (argc > 2) {
+        printf("Error! Entered too many arguments!");
+        return 1;
+    }
+
+    if (argc < 1) {
+        printf("Error! Entered too few arguments!");
+        return 1;
+    }
 
     srand(time(NULL));
 
     int lower_bound = 32;
     int higher_bound = 126;
 
-    char input[] = "Happy New Year!";
+    char *input = argv[1];
     int length = strlen(input);
     char random[length];
     int ran = 0;
